@@ -1,6 +1,5 @@
 import * as React from "react";
-import { cn } from "/src/lib/utils";
-
+import { cn } from "../../lib/utils";
 export interface ProgressRingProps extends React.HTMLAttributes<HTMLDivElement> {
   value: number;
   max?: number;

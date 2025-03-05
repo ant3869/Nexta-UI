@@ -68,7 +68,7 @@ function App() {
                   <Button variant="dark" size="xl">Extra Large</Button>
                 </div>
                 <div className="flex flex-wrap items-center gap-4">
-                  <Button variant="dark" size="icon" rounded="full">
+                  <Button variant="dark" size="icon" rounded="full" aria-label="Search">
                     <Search className="h-4 w-4" />
                   </Button>
                   <Button variant="dark" size="sm" rounded="full">Small Rounded</Button>
@@ -143,11 +143,15 @@ function App() {
                       <EyeOff 
                         className="h-4 w-4 cursor-pointer" 
                         onClick={() => setPasswordVisible(false)} 
+                        aria-label="Hide password"
+                        role="button"
                       />
                     ) : (
                       <Eye 
                         className="h-4 w-4 cursor-pointer" 
                         onClick={() => setPasswordVisible(true)} 
+                        aria-label="Show password"
+                        role="button"
                       />
                     )
                   }
@@ -156,7 +160,7 @@ function App() {
                   variant="dark"
                   placeholder="Search..." 
                   leftIcon={<Search className="h-4 w-4" />} 
-                  rightIcon={<X className="h-4 w-4 cursor-pointer" />} 
+                  rightIcon={<X className="h-4 w-4 cursor-pointer" aria-label="Clear search" role="button" />} 
                 />
               </CardContent>
             </Card>
@@ -187,11 +191,15 @@ function App() {
                       <EyeOff 
                         className="h-4 w-4 cursor-pointer" 
                         onClick={() => setPasswordVisible(false)} 
+                        aria-label="Hide password"
+                        role="button"
                       />
                     ) : (
                       <Eye 
                         className="h-4 w-4 cursor-pointer" 
                         onClick={() => setPasswordVisible(true)} 
+                        aria-label="Show password"
+                        role="button"
                       />
                     )
                   }
@@ -434,7 +442,7 @@ function App() {
                     <h4 className="font-medium">Success Toast</h4>
                     <p className="text-sm text-gray-400">Your profile has been updated.</p>
                   </div>
-                  <button className="text-gray-400 hover:text-white">
+                  <button type="button" className="text-gray-400 hover:text-white" aria-label="Close notification">
                     <X className="h-4 w-4" />
                   </button>
                 </div>
@@ -445,7 +453,7 @@ function App() {
                     <h4 className="font-medium">Error Toast</h4>
                     <p className="text-sm text-gray-400">Failed to save changes. Please try again.</p>
                   </div>
-                  <button className="text-gray-400 hover:text-white">
+                  <button type="button" className="text-gray-400 hover:text-white" aria-label="Close notification">
                     <X className="h-4 w-4" />
                   </button>
                 </div>

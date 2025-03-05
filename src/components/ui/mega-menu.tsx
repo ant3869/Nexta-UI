@@ -2,7 +2,7 @@ import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { ChevronDown } from "lucide-react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "/src/lib/utils";
+import { cn } from "../../lib/utils";
 
 const megaMenuVariants = cva(
   "relative inline-flex",

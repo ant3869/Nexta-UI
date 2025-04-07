@@ -1,5 +1,5 @@
 {
-  "name": "nexta-ui",
+  "name": "nexta",
   "compatibility_date": "2025-04-07",
   "assets": {
     "directory": "./dist"

@@ -77,6 +77,138 @@
   }
 }
 
+@layer components {
+  /* Rainbow Button Base Styles */
+  @property --button-shadow-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  @property --button-shadow-spread {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  @property --button-bg-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  @property --button-after-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  @property --coord-x {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  @property --coord-y {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  .rainbow-button-primary,
+  .rainbow-button-secondary,
+  .rainbow-button-ghost,
+  .rainbow-button-outline,
+  .rainbow-button-destructive {
+    background: rgb(0 0 0 / 6%);
+    background-image: conic-gradient(
+      from 180deg,
+      color(display-p3 1 0.1 0.05 / var(--button-bg-opacity)) 0%,
+      color(display-p3 1 0.75 0.1 / var(--button-bg-opacity)) 10%,
+      color(display-p3 0.95 1 0.1 / var(--button-bg-opacity)) 20%,
+      color(display-p3 0.2 1 0.1 / var(--button-bg-opacity)) 30%,
+      color(display-p3 0.1 1 1 / var(--button-bg-opacity)) 40%,
+      color(display-p3 0.1 0.9 1 / var(--button-bg-opacity)) 50%,
+      color(display-p3 0.1 0.5 1 / var(--button-bg-opacity)) 60%,
+      color(display-p3 0.5 0.1 1 / var(--button-bg-opacity)) 70%,
+      color(display-p3 0.9 0.1 1 / var(--button-bg-opacity)) 80%,
+      color(display-p3 1 0.1 0.9 / var(--button-bg-opacity)) 90%,
+      color(display-p3 1 0.1 0.05 / var(--button-bg-opacity)) 100%
+    );
+    box-shadow: 0 8px calc(var(--button-shadow-spread) * 1px) -8px rgb(0 0 0 / calc(var(--button-shadow-opacity) * 1%));
+    transition: all 0.3s ease;
+  }
+
+  .rainbow-button-primary::before,
+  .rainbow-button-primary::after,
+  .rainbow-button-secondary::before,
+  .rainbow-button-secondary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image: conic-gradient(
+      from 180deg,
+      #ff1a0d 0%,
+      #ffbf1a 10%,
+      #f2ff1a 20%,
+      #33ff1a 30%,
+      #1affff 40%,
+      #1ae6ff 50%,
+      #1a80ff 60%,
+      #801aff 70%,
+      #e61aff 80%,
+      #ff1ae6 90%,
+      #ff1a0d 100%
+    );
+    transition: inherit;
+  }
+
+  .rainbow-button-primary::after,
+  .rainbow-button-secondary::after {
+    filter: saturate(2) blur(5px);
+    transform: translate(
+      calc(calc(var(--coord-x) / 1.5) * 1px),
+      calc(calc(var(--coord-y) / 1.5) * -1px)
+    );
+    width: 180%;
+    height: 180%;
+    opacity: calc(var(--button-after-opacity) / 3);
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 1;
+    background: rgb(16 16 16);
+    border-radius: 0.7rem;
+    box-shadow: 
+      inset 0 2px 1px rgb(255 255 255 / 1%),
+      inset 0 -2px 3px rgb(0 0 0 / 25%);
+  }
+
+  /* Fallback for browsers that don't support display-p3 */
+  @supports not (color: color(display-p3 0.93 0.03 0.85)) {
+    .rainbow-button-primary,
+    .rainbow-button-secondary {
+      background-image: conic-gradient(
+        from 180deg,
+        hsl(3 93% 48% / var(--button-bg-opacity)) 0%,
+        hsl(26 91% 52% / var(--button-bg-opacity)) 10%,
+        hsl(65 89% 46% / var(--button-bg-opacity)) 20%,
+        hsl(122 86% 48% / var(--button-bg-opacity)) 30%,
+        hsl(181 78% 50% / var(--button-bg-opacity)) 40%,
+        hsl(193 76% 53% / var(--button-bg-opacity)) 50%,
+        hsl(219 95% 56% / var(--button-bg-opacity)) 60%,
+        hsl(269 95% 56% / var(--button-bg-opacity)) 70%,
+        hsl(292 93% 47% / var(--button-bg-opacity)) 80%,
+        hsl(327 96% 47% / var(--button-bg-opacity)) 90%,
+        hsl(3 93% 48% / var(--button-bg-opacity)) 100%
+      );
+    }
+  }
+}
+
 /* Custom styles for component showcase */
 .component-grid {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;

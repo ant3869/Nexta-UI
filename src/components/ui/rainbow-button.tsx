@@ -9,9 +9,6 @@ const rainbowButtonVariants = cva(
       variant: {
         primary: "rainbow-button-primary",
         secondary: "rainbow-button-secondary",
-        ghost: "rainbow-button-ghost",
-        outline: "rainbow-button-outline",
-        destructive: "rainbow-button-destructive",
       },
       size: {
         default: "px-4 py-3",

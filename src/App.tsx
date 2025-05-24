@@ -22,7 +22,7 @@ function App() {
             Rainbow Buttons
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card variant="dark">
               <CardHeader>
                 <CardTitle>Primary Buttons</CardTitle>
@@ -85,6 +85,19 @@ function App() {
                 >
                   Full Width Button
                 </RainbowButton>
+              </CardContent>
+            </Card>
+
+            <Card variant="dark">
+              <CardHeader>
+                <CardTitle>Button Sizes</CardTitle>
+                <CardDescription>Different size variations</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <RainbowButton size="sm">Small Button</RainbowButton>
+                <RainbowButton size="default">Default Button</RainbowButton>
+                <RainbowButton size="lg">Large Button</RainbowButton>
+                <RainbowButton size="icon">🌈</RainbowButton>
               </CardContent>
             </Card>
           </div>

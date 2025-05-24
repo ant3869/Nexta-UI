@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "/src/lib/utils"
 
 const rainbowButtonVariants = cva(
-  "relative overflow-hidden cursor-pointer font-semibold rounded-xl border border-white/5",
+  "relative overflow-hidden cursor-pointer font-semibold rounded-xl border border-white/10",
   {
     variants: {
       variant: {

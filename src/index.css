@@ -34,6 +34,36 @@
 
     --radius: 0.5rem;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+  }
 }
 
 @layer base {
@@ -47,131 +77,88 @@
   }
 }
 
-@layer components {
-  @property --button-shadow-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  
-  @property --button-shadow-spread {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  
-  @property --button-bg-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  
-  @property --button-after-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  
-  @property --coord-x {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  
-  @property --coord-y {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
+/* Custom styles for component showcase */
+.component-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
 
-  .rainbow-button-primary,
-  .rainbow-button-secondary {
-    background: rgb(0 0 0 / 6%);
-    background-image: conic-gradient(
-      from 180deg,
-      color(display-p3 1 0.1 0.05 / var(--button-bg-opacity)) 0%,
-      color(display-p3 1 0.75 0.1 / var(--button-bg-opacity)) 10%,
-      color(display-p3 0.95 1 0.1 / var(--button-bg-opacity)) 20%,
-      color(display-p3 0.2 1 0.1 / var(--button-bg-opacity)) 30%,
-      color(display-p3 0.1 1 1 / var(--button-bg-opacity)) 40%,
-      color(display-p3 0.1 0.9 1 / var(--button-bg-opacity)) 50%,
-      color(display-p3 0.1 0.5 1 / var(--button-bg-opacity)) 60%,
-      color(display-p3 0.5 0.1 1 / var(--button-bg-opacity)) 70%,
-      color(display-p3 0.9 0.1 1 / var(--button-bg-opacity)) 80%,
-      color(display-p3 1 0.1 0.9 / var(--button-bg-opacity)) 90%,
-      color(display-p3 1 0.1 0.05 / var(--button-bg-opacity)) 100%
-    );
-    box-shadow: 0 8px calc(var(--button-shadow-spread) * 1px) -8px rgb(0 0 0 / calc(var(--button-shadow-opacity) * 1%));
-    transition: all 0.3s ease;
-  }
+.component-section {
+  @apply mb-12;
+}
 
-  .rainbow-button-primary::before,
-  .rainbow-button-primary::after,
-  .rainbow-button-secondary::before,
-  .rainbow-button-secondary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    background-image: conic-gradient(
-      from 180deg,
-      #ff1a0d 0%,
-      #ffbf1a 10%,
-      #f2ff1a 20%,
-      #33ff1a 30%,
-      #1affff 40%,
-      #1ae6ff 50%,
-      #1a80ff 60%,
-      #801aff 70%,
-      #e61aff 80%,
-      #ff1ae6 90%,
-      #ff1a0d 100%
-    );
-    transition: inherit;
-  }
+.component-demo {
+  @apply p-6 border rounded-lg bg-card;
+}
 
-  .rainbow-button-primary::after,
-  .rainbow-button-secondary::after {
-    filter: saturate(2) blur(5px);
-    transform: translate(
-      calc(calc(var(--coord-x) / 1.5) * 1px),
-      calc(calc(var(--coord-y) / 1.5) * -1px)
-    );
-    width: 180%;
-    height: 180%;
-    opacity: calc(var(--button-after-opacity) / 3);
-  }
+.component-title {
+  @apply text-xl font-semibold mb-4;
+}
 
-  .button-inner {
-    position: relative;
-    z-index: 1;
-    background: rgb(16 16 16);
-    border-radius: 0.7rem;
-    box-shadow: 
-      inset 0 2px 1px rgb(255 255 255 / 1%),
-      inset 0 -2px 3px rgb(0 0 0 / 25%);
-  }
+.component-description {
+  @apply text-sm text-muted-foreground mb-6;
+}
 
-  @supports not (color: color(display-p3 0.93 0.03 0.85)) {
-    .rainbow-button-primary,
-    .rainbow-button-secondary {
-      background-image: conic-gradient(
-        from 180deg,
-        hsl(3 93% 48% / var(--button-bg-opacity)) 0%,
-        hsl(26 91% 52% / var(--button-bg-opacity)) 10%,
-        hsl(65 89% 46% / var(--button-bg-opacity)) 20%,
-        hsl(122 86% 48% / var(--button-bg-opacity)) 30%,
-        hsl(181 78% 50% / var(--button-bg-opacity)) 40%,
-        hsl(193 76% 53% / var(--button-bg-opacity)) 50%,
-        hsl(219 95% 56% / var(--button-bg-opacity)) 60%,
-        hsl(269 95% 56% / var(--button-bg-opacity)) 70%,
-        hsl(292 93% 47% / var(--button-bg-opacity)) 80%,
-        hsl(327 96% 47% / var(--button-bg-opacity)) 90%,
-        hsl(3 93% 48% / var(--button-bg-opacity)) 100%
-      );
-    }
-  }
+.component-variants {
+  @apply flex flex-wrap gap-4;
+}
+
+.color-swatch {
+  @apply w-12 h-12 rounded-md shadow-sm;
+}
+
+.color-grid {
+  @apply grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4;
+}
+
+.theme-toggle-wrapper {
+  @apply fixed top-4 right-4 z-50;
+}
+
+/* 3D Effect Styles */
+.neo-inset {
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+}
+
+.neo-elevated {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              -2px -2px 5px rgba(255, 255, 255, 0.05);
+}
+
+.neo-button {
+  background: linear-gradient(145deg, hsl(220, 10%, 18%), hsl(220, 10%, 14%));
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              -1px -1px 3px rgba(255, 255, 255, 0.05);
+}
+
+.neo-button:active {
+  background: linear-gradient(145deg, hsl(220, 10%, 14%), hsl(220, 10%, 18%));
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              inset -1px -1px 3px rgba(255, 255, 255, 0.05);
+}
+
+.neo-input {
+  background: linear-gradient(145deg, hsl(220, 10%, 14%), hsl(220, 10%, 16%));
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              inset -1px -1px 3px rgba(255, 255, 255, 0.05);
+}
+
+.neo-card {
+  background: linear-gradient(145deg, hsl(220, 10%, 18%), hsl(220, 10%, 14%));
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5), 
+              -2px -2px 5px rgba(255, 255, 255, 0.05);
+}
+
+.neo-switch-track {
+  background: linear-gradient(145deg, hsl(220, 10%, 14%), hsl(220, 10%, 16%));
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              inset -1px -1px 3px rgba(255, 255, 255, 0.05);
+}
+
+.neo-switch-thumb {
+  background: linear-gradient(145deg, hsl(220, 10%, 20%), hsl(220, 10%, 16%));
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              -1px -1px 3px rgba(255, 255, 255, 0.05);
 }
 
 .carbon-pattern {
@@ -180,4 +167,26 @@
     linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1));
   background-size: 10px 10px;
   background-position: 0 0, 5px 5px;
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-border:hover::after {
+  opacity: 1;
 }

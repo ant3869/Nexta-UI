@@ -6,6 +6,7 @@ import { Switch } from './components/ui/switch'
 import { FloatingLabelInput } from './components/ui/floating-label-input'
 import { ThemeToggle } from './components/ui/theme-toggle'
 import { ProgressRing } from './components/ui/progress-ring'
+import { StarRating } from './components/ui/rating'
 import { Search, Mail, Lock, Eye, EyeOff, ChevronRight, Download, Check, X, AlertCircle, Info } from 'lucide-react'
 
 function App() {
@@ -460,6 +461,19 @@ function App() {
                     <Button size="sm" variant="ghost">Later</Button>
                     <Button size="sm" variant="dark">Update</Button>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            
+            <Card variant="dark">
+              <CardHeader>
+                <CardTitle>Rating</CardTitle>
+                <CardDescription>Star rating</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-gray-800/80 border border-gray-700 shadow-lg rounded-lg p-4 flex items-start max-w-sm neo-card">
+                  <StarRating />
                 </div>
               </CardContent>
             </Card>
